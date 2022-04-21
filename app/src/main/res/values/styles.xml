@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomPodorozhnikTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pure_green</item>
+        <item name="colorPrimaryVariant">@color/transparent_green</item>
+        <item name="colorPrimaryDark">@color/transparent_green</item>
+        <item name="colorOnPrimary">@color/grey</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/pure_blue</item>
+        <item name="colorSecondaryVariant">@color/transparent_green</item>
+        <item name="colorOnSecondary">@color/pure_green</item>
+    </style>
+</resources>

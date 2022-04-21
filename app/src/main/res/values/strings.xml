@@ -6,4 +6,9 @@
     <string name="login_button_text">Войти</string>
     <string name="register_suggestion_text">Впервые в приложении?</string>
     <string name="register_button_text">Зарегистрироваться</string>
+    <string name="wrong_login_text">Вы ввели несуществующий логин</string>
+    <string name="wrong_password_text">Вы ввели неверный пароль</string>
+    <string name="no_entered_data_text">Вы не ввели логин и пароль</string>
+    <string name="lost_connection_text">Подключитесь к интернету</string>
+    <string name="loading_text">Подождите...</string>
 </resources>
