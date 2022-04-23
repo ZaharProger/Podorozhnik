@@ -10,20 +10,22 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.DatabaseValues;
-import com.podorozhnik.fragments.LoginFragment;
+import com.podorozhnik.fragments.RegisterFragment;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Authorizer implements ValueEventListener {
+public class AccountCreator implements ValueEventListener {
     private User userData;
-    private LoginFragment fragmentReference;
+    private RegisterFragment fragmentReference;
 
-    public Authorizer(User userData, LoginFragment fragmentReference){
+    public AccountCreator(User userData, RegisterFragment fragmentReference){
         this.userData = userData;
         this.fragmentReference = fragmentReference;
     }
 
-    public void doAuthorization(){
+    public void createAccount(){
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         DatabaseReference users = database.child(DatabaseValues.USERS_TABLE);
         users.addListenerForSingleValueEvent(this);
@@ -46,19 +48,33 @@ public class Authorizer implements ValueEventListener {
             isFound = users.get(i).getLogin().equals(userData.getLogin());
         }
 
-        if (isFound){
-            if (users.get(i - 1).getPassword().equals(userData.getPassword()))
-                result = OperationResults.SUCCESS;
-            else
-                result = OperationResults.WRONG_PASSWORD;
+        if (!isFound){
+            List<Integer> usersId = users.stream()
+                                        .map(user -> user.getId())
+                                        .collect(Collectors.toList());
+
+            int newUserId;
+            do{
+                newUserId = Generator.generateId(10);
+            } while (usersId.contains(newUserId));
+
+            userData.setId(newUserId);
+            FirebaseDatabase.getInstance()
+                            .getReference()
+                            .child(DatabaseValues.USERS_TABLE)
+                            .push()
+                            .setValue(userData);
+
+            result = OperationResults.SUCCESS;
         }
         else
-            result = OperationResults.WRONG_LOGIN;
+            result = OperationResults.EXISTING_LOGIN;
 
         fragmentReference.onResultReceived(result);
     }
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
+
     }
 }

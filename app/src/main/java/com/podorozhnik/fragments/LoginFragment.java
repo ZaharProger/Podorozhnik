@@ -1,8 +1,5 @@
 package com.podorozhnik.fragments;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +11,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.podorozhnik.R;
+import com.podorozhnik.StartActivity;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
+import com.podorozhnik.final_values.FragmentTags;
+import com.podorozhnik.interfaces.DatabaseEventListener;
 import com.podorozhnik.managers.Authorizer;
+import com.podorozhnik.managers.ConnectionChecker;
 
-public class LoginFragment extends Fragment implements View.OnClickListener {
+public class LoginFragment extends Fragment implements View.OnClickListener, DatabaseEventListener {
     Button loginButton;
     Button registerButton;
     EditText loginField;
@@ -49,13 +51,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             String enteredLogin = loginField.getText().toString().trim();
             String enteredPassword = passwordField.getText().toString().trim();
 
-            User userData = new User(-1, enteredLogin, enteredPassword);
+            if (!(enteredLogin.isEmpty() || enteredPassword.isEmpty()) && ConnectionChecker.checkConnection(getContext())){
+                User userData = new User(-1, enteredLogin, enteredPassword);
 
-            if (!(enteredLogin.isEmpty() || enteredPassword.isEmpty()) && checkConnection()){
                 Authorizer authorizer = new Authorizer(userData, LoginFragment.this);
-
                 authorizer.doAuthorization();
+
                 loginButton.setText(R.string.loading_text);
+                registerButton.setVisibility(View.INVISIBLE);
+                StartActivity.hasAsyncTasks = true;
             }
             else if (enteredLogin.isEmpty() || enteredPassword.isEmpty())
                 Toast.makeText(getContext(), R.string.no_entered_data_text, Toast.LENGTH_LONG).show();
@@ -63,26 +67,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), R.string.lost_connection_text, Toast.LENGTH_LONG).show();
         }
         else{
-            //Тут переход к регистрации
+            FragmentManager fragmentManager = getParentFragmentManager();
+
+            fragmentManager.beginTransaction()
+                                    .remove(fragmentManager.findFragmentByTag(FragmentTags.LOGIN_TAG))
+                                    .add(R.id.authContainer, new RegisterFragment(), FragmentTags.REGISTER_TAG)
+                                    .commit();
         }
     }
 
-    private boolean checkConnection(){
-        boolean isConnected = false;
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        if (activeNetwork != null) {
-            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI || activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE ||
-                    activeNetwork.getType() == ConnectivityManager.TYPE_ETHERNET || activeNetwork.getType() == ConnectivityManager.TYPE_VPN)
-                isConnected = true;
-        }
-
-        return isConnected;
-    }
-
+    @Override
     public void onResultReceived(OperationResults result){
         loginButton.setText(R.string.login_button_text);
+        registerButton.setVisibility(View.VISIBLE);
+        StartActivity.hasAsyncTasks = false;
 
         switch(result){
             case SUCCESS:
