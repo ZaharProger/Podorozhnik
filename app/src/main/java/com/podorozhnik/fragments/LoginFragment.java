@@ -1,5 +1,6 @@
 package com.podorozhnik.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.podorozhnik.R;
 import com.podorozhnik.StartActivity;
+import com.podorozhnik.StartMenuActivity;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
@@ -84,7 +86,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
         switch(result){
             case SUCCESS:
-                //Тут входим в приложение
+                Intent intent = new Intent(getContext(), StartMenuActivity.class);
+                startActivity(intent);
                 break;
             case WRONG_LOGIN:
                 Toast.makeText(getContext(), R.string.wrong_login_text, Toast.LENGTH_LONG).show();
