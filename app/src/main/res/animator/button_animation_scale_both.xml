@@ -11,10 +11,6 @@
                 android:duration="100"
                 android:valueTo="1.1"
                 android:valueType="floatType"/>
-            <objectAnimator android:propertyName="translationZ"
-                android:duration="100"
-                android:valueTo="20"
-                android:valueType="floatType"/>
         </set>
     </item>
     <item
@@ -28,10 +24,6 @@
             <objectAnimator android:propertyName="scaleY"
                 android:duration="100"
                 android:valueTo="1"
-                android:valueType="floatType"/>
-            <objectAnimator android:propertyName="translationZ"
-                android:duration="100"
-                android:valueTo="10"
                 android:valueType="floatType"/>
         </set>
     </item>

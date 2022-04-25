@@ -19,4 +19,8 @@
     <string name="lost_connection_text">Подключитесь к интернету!</string>
     <string name="loading_text">Подождите...</string>
     <string name="wait_text">Дождитесь завершения проверки!</string>
+    <string name="choose_text">Кто Вы?</string>
+    <string name="passenger_text">Пассажир</string>
+    <string name="driver_text">Водитель</string>
+    <string name="find_passengers_text">Найти попутчиков</string>
 </resources>

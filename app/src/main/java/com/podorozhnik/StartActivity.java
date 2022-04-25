@@ -1,5 +1,6 @@
 package com.podorozhnik;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,11 +12,16 @@ import com.podorozhnik.final_values.FragmentTags;
 import com.podorozhnik.fragments.LoginFragment;
 
 public class StartActivity extends AppCompatActivity {
+    /*
+        Для блокировки перехода по окнам во время выполнения запросов к серверу,
+        чтобы избежать конфликтов между потоками
+     */
     public static boolean hasAsyncTasks = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity_layout);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getSupportFragmentManager().beginTransaction()
                                     .add(R.id.authContainer, new LoginFragment(), FragmentTags.LOGIN_TAG)
