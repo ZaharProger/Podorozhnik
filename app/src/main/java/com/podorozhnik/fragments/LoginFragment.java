@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.R;
 import com.podorozhnik.StartActivity;
 import com.podorozhnik.StartMenuActivity;
@@ -64,9 +64,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
                 StartActivity.hasAsyncTasks = true;
             }
             else if (enteredLogin.isEmpty() || enteredPassword.isEmpty())
-                Toast.makeText(getContext(), R.string.no_entered_data_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(view, R.string.no_entered_data_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
             else
-                Toast.makeText(getContext(), R.string.lost_connection_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(view, R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
         }
         else{
             FragmentManager fragmentManager = getParentFragmentManager();
@@ -90,10 +96,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
                 startActivity(intent);
                 break;
             case WRONG_LOGIN:
-                Toast.makeText(getContext(), R.string.wrong_login_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(getView(), R.string.wrong_login_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
                 break;
             case WRONG_PASSWORD:
-                Toast.makeText(getContext(), R.string.wrong_password_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(getView(), R.string.wrong_password_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
                 break;
         }
     }

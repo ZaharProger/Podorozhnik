@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.R;
 import com.podorozhnik.StartActivity;
 import com.podorozhnik.entities.User;
@@ -56,9 +56,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             StartActivity.hasAsyncTasks = true;
         }
         else if (enteredLogin.isEmpty() || enteredPassword.isEmpty())
-            Toast.makeText(getContext(), R.string.no_entered_data_text, Toast.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.no_entered_data_text, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                    .setTextColor(getActivity().getColor(R.color.white))
+                    .show();
         else
-            Toast.makeText(getContext(), R.string.lost_connection_text, Toast.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                    .setTextColor(getActivity().getColor(R.color.white))
+                    .show();
     }
 
     @Override
@@ -74,10 +80,16 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                         .add(R.id.authContainer, new LoginFragment(), FragmentTags.LOGIN_TAG)
                         .commit();
 
-                Toast.makeText(getContext(), R.string.success_registration_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(getView(), R.string.success_registration_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
                 break;
             case EXISTING_LOGIN:
-                Toast.makeText(getContext(), R.string.existing_login_text, Toast.LENGTH_LONG).show();
+                Snackbar.make(getView(), R.string.existing_login_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
                 break;
         }
     }

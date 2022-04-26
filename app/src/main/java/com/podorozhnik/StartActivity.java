@@ -2,12 +2,12 @@ package com.podorozhnik;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.final_values.FragmentTags;
 import com.podorozhnik.fragments.LoginFragment;
 
@@ -44,6 +44,9 @@ public class StartActivity extends AppCompatActivity {
                 finishAffinity();
         }
         else
-            Toast.makeText(getApplicationContext(), R.string.wait_text, Toast.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content).getRootView(), R.string.wait_text, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getColor(R.color.pure_green))
+                    .setTextColor(getColor(R.color.white))
+                    .show();
     }
 }
