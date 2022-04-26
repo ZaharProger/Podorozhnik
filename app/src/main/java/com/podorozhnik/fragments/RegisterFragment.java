@@ -42,7 +42,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
         String enteredLogin = loginField.getText().toString().trim();
         String enteredPassword = passwordField.getText().toString().trim();
 

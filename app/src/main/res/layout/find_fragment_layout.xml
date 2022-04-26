@@ -11,14 +11,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/calibri"
-            android:text="@string/hello_text"
+            android:text="@string/find_text"
             android:textAlignment="center"
-            android:textColor="@color/pure_blue"
+            android:textColor="@color/pure_green"
             android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,72 +25,106 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:fontFamily="@font/calibri"
-            android:text="@string/enter_login_text"
+            android:text="@string/from_text"
             android:textAlignment="center"
-            android:textColor="@color/pure_blue"
+            android:textColor="@color/pure_green"
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <EditText
-            android:id="@+id/loginField"
+            android:id="@+id/findFromField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
+            android:drawableStart="@drawable/ic_gps_from"
+            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/calibri"
-            android:text="@string/enter_password_text"
+            android:text="@string/to_text"
             android:textAlignment="center"
-            android:textColor="@color/pure_blue"
+            android:textColor="@color/pure_green"
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginField" />
+            app:layout_constraintTop_toBottomOf="@+id/findFromField" />
 
         <EditText
-            android:id="@+id/passwordField"
+            android:id="@+id/findToField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
+            android:drawableStart="@drawable/ic_gps_to"
+            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
-            android:inputType="textPassword"
+            android:textAlignment="textStart"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/date_text"
+            android:textAlignment="center"
+            android:textColor="@color/pure_green"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/findToField" />
+
+        <EditText
+            android:id="@+id/findDateField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="64dp"
+            android:backgroundTint="#ffb2bcaf"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/calibri"
+            android:inputType="date|time"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/findConfirmButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
@@ -102,7 +135,7 @@
             android:backgroundTintMode="src_over"
             android:fontFamily="@font/calibri"
             android:letterSpacing="0.02"
-            android:text="@string/login_button_text"
+            android:text="@string/find_confirm_text"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/blue_button_text_animation"
@@ -110,44 +143,8 @@
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordField" />
+            app:layout_constraintTop_toBottomOf="@+id/findDateField" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:fontFamily="@font/calibri"
-            android:text="@string/register_suggestion_text"
-            android:textAlignment="center"
-            android:textColor="@color/pure_green"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:background="@drawable/grey_button_style"
-            android:backgroundTint="@color/green_button_animation"
-            android:backgroundTintMode="src_over"
-            android:fontFamily="@font/calibri"
-            android:letterSpacing="0.02"
-            android:text="@string/register_button_text"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/green_button_text_animation"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
