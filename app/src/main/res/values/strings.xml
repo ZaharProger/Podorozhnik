@@ -3,6 +3,7 @@
     <string name="search_item_title">Поиск</string>
     <string name="find_item_title">Найти</string>
     <string name="create_item_title">Создать</string>
+    <string name="all_item_title">Всё</string>
     <string name="hello_text">Добро пожаловать!</string>
     <string name="enter_login_text">Введите логин</string>
     <string name="enter_password_text">Введите пароль</string>

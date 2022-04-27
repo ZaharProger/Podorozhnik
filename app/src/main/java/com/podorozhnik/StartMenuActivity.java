@@ -10,10 +10,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.podorozhnik.fragments.CreateFragment;
 import com.podorozhnik.fragments.FindFragment;
+import com.podorozhnik.fragments.SearchFragment;
 
 public class StartMenuActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     private FindFragment findFragment;
     private CreateFragment createFragment;
+    private SearchFragment searchFragment;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +23,11 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
 
         findFragment = new FindFragment();
         createFragment = new CreateFragment();
+        searchFragment = new SearchFragment();
 
         BottomNavigationView appMenu = findViewById(R.id.appMenu);
         appMenu.setOnItemSelectedListener(this);
+        appMenu.setSelectedItemId(R.id.searchItem);
     }
 
     @Override
@@ -35,7 +39,14 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         boolean isChosen = false;
 
-        if (item.getItemId() == R.id.findItem){
+        if (item.getItemId() == R.id.searchItem){
+            isChosen = true;
+
+            getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.menuItemContainer, searchFragment)
+                                        .commit();
+        }
+        else if (item.getItemId() == R.id.findItem){
             isChosen = true;
 
             getSupportFragmentManager().beginTransaction()
