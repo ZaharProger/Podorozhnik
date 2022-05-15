@@ -113,6 +113,7 @@
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
             android:drawablePadding="8dp"
+            android:hint="@string/date_field_hint"
             android:fontFamily="@font/calibri"
             android:inputType="date|time"
             android:textAlignment="center"

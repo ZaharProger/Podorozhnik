@@ -1,5 +1,8 @@
 package com.podorozhnik.managers;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -10,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.DatabaseValues;
+import com.podorozhnik.final_values.PrefsValues;
 import com.podorozhnik.fragments.LoginFragment;
 
 import java.util.ArrayList;
@@ -47,8 +51,14 @@ public class Authorizer implements ValueEventListener {
         }
 
         if (isFound){
-            if (users.get(i - 1).getPassword().equals(userData.getPassword()))
+            if (users.get(i - 1).getPassword().equals(userData.getPassword())){
                 result = OperationResults.SUCCESS;
+
+                SharedPreferences prefs = fragmentReference.getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+                prefsEditor.putInt(PrefsValues.USER_ID, users.get(i - 1).getId());
+                prefsEditor.apply();
+            }
             else
                 result = OperationResults.WRONG_PASSWORD;
         }
@@ -60,5 +70,6 @@ public class Authorizer implements ValueEventListener {
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
+        fragmentReference.onResultReceived(OperationResults.DATABASE_ERROR);
     }
 }

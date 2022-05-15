@@ -4,5 +4,6 @@ public enum OperationResults {
     SUCCESS,
     WRONG_LOGIN,
     WRONG_PASSWORD,
-    EXISTING_LOGIN
+    EXISTING_LOGIN,
+    DATABASE_ERROR
 }

@@ -107,6 +107,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
                         .setTextColor(getActivity().getColor(R.color.white))
                         .show();
                 break;
+            case DATABASE_ERROR:
+                Snackbar.make(getView(), R.string.database_error_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
+                break;
         }
     }
 }

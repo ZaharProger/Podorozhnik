@@ -75,6 +75,6 @@ public class AccountCreator implements ValueEventListener {
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+        fragmentReference.onResultReceived(OperationResults.DATABASE_ERROR);
     }
 }
