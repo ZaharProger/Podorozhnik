@@ -10,6 +10,7 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.podorozhnik.R;
 import com.podorozhnik.final_values.FragmentTags;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -30,7 +31,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int currentMonth = c.get(Calendar.MONTH);
         int currentDay = c.get(Calendar.DAY_OF_MONTH);
 
-        return new DatePickerDialog(getActivity(), this, currentYear, currentMonth, currentDay);
+        return new DatePickerDialog(getActivity(), R.style.CustomDateTimePickerTheme, this,
+                                    currentYear, currentMonth, currentDay);
     }
 
     @Override

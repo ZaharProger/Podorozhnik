@@ -11,6 +11,8 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.podorozhnik.R;
+
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
     private CreateFragment fragmentReference;
 
@@ -26,7 +28,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), this, hour, minute,
+        return new TimePickerDialog(getActivity(), R.style.CustomDateTimePickerTheme, this, hour, minute,
                                     DateFormat.is24HourFormat(getActivity()));
     }
 
