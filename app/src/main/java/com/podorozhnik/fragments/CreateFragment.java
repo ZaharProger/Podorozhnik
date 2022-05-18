@@ -23,7 +23,6 @@ import com.podorozhnik.final_values.FragmentTags;
 import com.podorozhnik.final_values.PrefsValues;
 import com.podorozhnik.interfaces.DatabaseEventListener;
 import com.podorozhnik.managers.ConnectionChecker;
-import com.podorozhnik.managers.Generator;
 import com.podorozhnik.managers.RequestsManager;
 
 public class CreateFragment extends Fragment implements View.OnClickListener, View.OnTouchListener, DatabaseEventListener {
@@ -61,13 +60,12 @@ public class CreateFragment extends Fragment implements View.OnClickListener, Vi
 
             if (!(fromFieldData.equals("") || toFieldData.equals("") || dateFieldData.length != 2)){
                 if (ConnectionChecker.checkConnection(getContext())){
-                    int userId = 0;
+                    String userLogin = "";
                     SharedPreferences prefs = getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
-                    if (prefs.contains(PrefsValues.USER_ID))
-                        userId = prefs.getInt(PrefsValues.USER_ID, 0);
+                    if (prefs.contains(PrefsValues.USER_LOGIN))
+                        userLogin = prefs.getString(PrefsValues.USER_LOGIN, "");
 
-                    Request driverRequest = new Request(Generator.generateId(10), userId,
-                                                        fromFieldData, toFieldData, dateFieldData[0],
+                    Request driverRequest = new Request(userLogin, fromFieldData, toFieldData, dateFieldData[0],
                                                         dateFieldData[1], true);
 
                     RequestsManager requestsManager = new RequestsManager(driverRequest, CreateFragment.this);

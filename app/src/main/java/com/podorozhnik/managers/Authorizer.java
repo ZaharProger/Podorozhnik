@@ -56,7 +56,7 @@ public class Authorizer implements ValueEventListener {
 
                 SharedPreferences prefs = fragmentReference.getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = prefs.edit();
-                prefsEditor.putInt(PrefsValues.USER_ID, users.get(i - 1).getId());
+                prefsEditor.putString(PrefsValues.USER_LOGIN, users.get(i - 1).getLogin());
                 prefsEditor.apply();
             }
             else

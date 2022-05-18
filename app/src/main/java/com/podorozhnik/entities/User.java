@@ -1,21 +1,15 @@
 package com.podorozhnik.entities;
 
 public class User {
-    private int id;
     private String login;
     private String password;
 
     public User()
     {}
 
-    public User(int id, String login, String password){
-        this.id = id;
+    public User(String login, String password){
         this.login = login;
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getLogin() {
@@ -24,10 +18,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setLogin(String login) {

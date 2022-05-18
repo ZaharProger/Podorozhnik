@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
             String enteredPassword = passwordField.getText().toString().trim();
 
             if (!(enteredLogin.isEmpty() || enteredPassword.isEmpty()) && ConnectionChecker.checkConnection(getContext())){
-                User userData = new User(-1, enteredLogin, enteredPassword);
+                User userData = new User(enteredLogin, enteredPassword);
 
                 Authorizer authorizer = new Authorizer(userData, LoginFragment.this);
                 authorizer.doAuthorization();

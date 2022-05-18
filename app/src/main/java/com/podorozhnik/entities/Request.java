@@ -1,18 +1,16 @@
 package com.podorozhnik.entities;
 
 public class Request {
-    private int id;
-    private int userId;
+    private String userLogin;
     private String departurePoint;
     private String destinationPoint;
     private String date;
     private String time;
     private boolean isDriver;
 
-    public Request(int id, int userId, String departurePoint, String destinationPoint,
+    public Request(String userLogin, String departurePoint, String destinationPoint,
                    String date, String time, boolean isDriver){
-        this.id = id;
-        this.userId = userId;
+        this.userLogin = userLogin;
         this.departurePoint = departurePoint;
         this.destinationPoint = destinationPoint;
         this.date = date;
@@ -20,20 +18,12 @@ public class Request {
         this.isDriver = isDriver;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getUserId() {
-        return userId;
+    public String getUserLogin() {
+        return userLogin;
     }
 
     public boolean isDriver() {
