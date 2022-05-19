@@ -15,9 +15,9 @@ import com.podorozhnik.final_values.FragmentTags;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     private TimePickerFragment timePickerFragment;
-    private CreateFragment fragmentReference;
+    private DatetimeFragment fragmentReference;
 
-    public DatePickerFragment(CreateFragment fragmentReference){
+    public DatePickerFragment(DatetimeFragment fragmentReference){
         timePickerFragment = new TimePickerFragment(fragmentReference);
         this.fragmentReference = fragmentReference;
     }

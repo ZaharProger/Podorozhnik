@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.podorozhnik.R;
 
-public class FindFragment extends Fragment implements View.OnClickListener {
+public class FindFragment extends DatetimeFragment implements View.OnClickListener {
 
     @Nullable
     @Override
@@ -25,6 +25,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+    }
+
+    @Override
+    void onDateChanged(String newData, String dialogFragmentTag) {
 
     }
 }

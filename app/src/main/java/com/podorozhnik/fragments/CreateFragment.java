@@ -25,7 +25,7 @@ import com.podorozhnik.interfaces.DatabaseEventListener;
 import com.podorozhnik.managers.ConnectionChecker;
 import com.podorozhnik.managers.RequestsManager;
 
-public class CreateFragment extends Fragment implements View.OnClickListener, View.OnTouchListener, DatabaseEventListener {
+public class CreateFragment extends DatetimeFragment implements View.OnClickListener, View.OnTouchListener, DatabaseEventListener {
     private EditText createFromField;
     private EditText createToField;
     private EditText createDateField;
@@ -92,6 +92,7 @@ public class CreateFragment extends Fragment implements View.OnClickListener, Vi
         }
     }
 
+    @Override
     public void onDateChanged(String newData, String dialogFragmentTag) {
         if (dialogFragmentTag.equals(FragmentTags.DATE_PICKER_TAG))
             createDateField.setText(newData);

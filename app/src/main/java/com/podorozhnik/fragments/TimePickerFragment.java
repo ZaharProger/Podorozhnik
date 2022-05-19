@@ -14,9 +14,9 @@ import androidx.fragment.app.DialogFragment;
 import com.podorozhnik.R;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-    private CreateFragment fragmentReference;
+    private DatetimeFragment fragmentReference;
 
-    public TimePickerFragment(CreateFragment fragmentReference){
+    public TimePickerFragment(DatetimeFragment fragmentReference){
         this.fragmentReference = fragmentReference;
     }
 
