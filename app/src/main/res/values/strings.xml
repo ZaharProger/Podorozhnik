@@ -10,13 +10,15 @@
     <string name="create_login_text">Придумайте логин</string>
     <string name="create_password_text">Создайте пароль</string>
     <string name="login_button_text">Войти</string>
+    <string name="success_insertion_text">Запрос успешно оформлен</string>
+    <string name="database_error_text">Ошибка при обработке запроса базой данных</string>
     <string name="register_suggestion_text">Впервые в приложении?</string>
     <string name="success_registration_text">Поздравляем!\nТеперь вы можете войти в аккаунт</string>
     <string name="register_button_text">Зарегистрироваться</string>
     <string name="wrong_login_text">Вы ввели несуществующий логин!</string>
     <string name="existing_login_text">Такой логин уже занят!</string>
     <string name="wrong_password_text">Вы ввели неверный пароль!</string>
-    <string name="no_entered_data_text">Вы не ввели логин и пароль!</string>
+    <string name="no_entered_data_text">Вы не заполнили поля!</string>
     <string name="lost_connection_text">Подключитесь к интернету!</string>
     <string name="loading_text">Подождите...</string>
     <string name="wait_text">Дождитесь завершения проверки!</string>
@@ -27,4 +29,6 @@
     <string name="date_text">Дата</string>
     <string name="create_confirm_text">Поехали!</string>
     <string name="create_text">Создать поездку</string>
+    <string name="date_field_hint">дд.мм.гггг чч.мм</string>
+    <string name="not_found_text">Ничего не найдено</string>
 </resources>

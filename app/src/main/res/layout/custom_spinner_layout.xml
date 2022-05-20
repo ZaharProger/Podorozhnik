@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@android:id/text1"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#005B497E"
+    android:ellipsize="marquee"
+    android:singleLine="true"
+    android:textAlignment="center"
+    android:textColor="@color/grey"
+    android:textColorHighlight="@color/grey"
+    android:textColorLink="@color/grey"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

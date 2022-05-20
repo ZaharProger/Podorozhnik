@@ -42,19 +42,17 @@
             android:id="@+id/createFromField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
-            android:drawableStart="@drawable/ic_gps_from"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
             android:textAlignment="textStart"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/createFromButton"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
@@ -75,19 +73,17 @@
             android:id="@+id/createToField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
-            android:drawableStart="@drawable/ic_gps_to"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
             android:textAlignment="textStart"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/createToButton"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <TextView
@@ -113,6 +109,7 @@
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
             android:drawablePadding="8dp"
+            android:hint="@string/date_field_hint"
             android:fontFamily="@font/calibri"
             android:inputType="date|time"
             android:textAlignment="center"
@@ -144,6 +141,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/createDateField" />
+
+        <ImageButton
+            android:id="@+id/createFromButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/from_button_animation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <ImageButton
+            android:id="@+id/createToButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/to_button_animation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

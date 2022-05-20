@@ -49,16 +49,6 @@ public class AccountCreator implements ValueEventListener {
         }
 
         if (!isFound){
-            List<Integer> usersId = users.stream()
-                                        .map(user -> user.getId())
-                                        .collect(Collectors.toList());
-
-            int newUserId;
-            do{
-                newUserId = Generator.generateId(10);
-            } while (usersId.contains(newUserId));
-
-            userData.setId(newUserId);
             FirebaseDatabase.getInstance()
                             .getReference()
                             .child(DatabaseValues.USERS_TABLE)
@@ -75,6 +65,6 @@ public class AccountCreator implements ValueEventListener {
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+        fragmentReference.onResultReceived(OperationResults.DATABASE_ERROR);
     }
 }

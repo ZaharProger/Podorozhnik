@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
             String enteredPassword = passwordField.getText().toString().trim();
 
             if (!(enteredLogin.isEmpty() || enteredPassword.isEmpty()) && ConnectionChecker.checkConnection(getContext())){
-                User userData = new User(-1, enteredLogin, enteredPassword);
+                User userData = new User(enteredLogin, enteredPassword);
 
                 Authorizer authorizer = new Authorizer(userData, LoginFragment.this);
                 authorizer.doAuthorization();
@@ -103,6 +103,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
                 break;
             case WRONG_PASSWORD:
                 Snackbar.make(getView(), R.string.wrong_password_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
+                break;
+            case DATABASE_ERROR:
+                Snackbar.make(getView(), R.string.database_error_text, Snackbar.LENGTH_LONG)
                         .setBackgroundTint(getActivity().getColor(R.color.pure_green))
                         .setTextColor(getActivity().getColor(R.color.white))
                         .show();

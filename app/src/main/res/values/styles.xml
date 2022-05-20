@@ -11,4 +11,10 @@
         <item name="colorSecondaryVariant">@color/transparent_green</item>
         <item name="colorOnSecondary">@color/pure_green</item>
     </style>
+
+    <style name="CustomDateTimePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/pure_green</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>
