@@ -11,12 +11,13 @@ import com.podorozhnik.entities.Request;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.DatabaseValues;
 import com.podorozhnik.fragments.CreateFragment;
+import com.podorozhnik.fragments.DataSendFragment;
 
 public class RequestsManager implements ValueEventListener {
     private Request request;
-    private CreateFragment fragmentReference;
+    private DataSendFragment fragmentReference;
 
-    public RequestsManager(Request request, CreateFragment fragmentReference){
+    public RequestsManager(Request request, DataSendFragment fragmentReference){
         this.request = request;
         this.fragmentReference = fragmentReference;
     }

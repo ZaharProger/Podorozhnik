@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.R;
@@ -21,16 +21,18 @@ import com.podorozhnik.entities.Request;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
 import com.podorozhnik.final_values.PrefsValues;
-import com.podorozhnik.interfaces.DatabaseEventListener;
 import com.podorozhnik.managers.ConnectionChecker;
 import com.podorozhnik.managers.RequestsManager;
 
-public class CreateFragment extends DatetimeFragment implements View.OnClickListener, View.OnTouchListener, DatabaseEventListener {
+public class CreateFragment extends DataSendFragment implements View.OnClickListener, View.OnTouchListener{
     private EditText createFromField;
     private EditText createToField;
     private EditText createDateField;
     private Button createConfirmButton;
+    private ImageButton createFromButton;
+    private ImageButton createToButton;
     private DatePickerFragment datePickerFragment;
+    private LocationFragment locationFragment;
 
     @Nullable
     @Override
@@ -39,6 +41,10 @@ public class CreateFragment extends DatetimeFragment implements View.OnClickList
 
         createConfirmButton = fragmentView.findViewById(R.id.createConfirmButton);
         createConfirmButton.setOnClickListener(this);
+        createFromButton = fragmentView.findViewById(R.id.createFromButton);
+        createFromButton.setOnClickListener(this);
+        createToButton = fragmentView.findViewById(R.id.createToButton);
+        createToButton.setOnClickListener(this);
 
         createFromField = fragmentView.findViewById(R.id.createFromField);
         createToField = fragmentView.findViewById(R.id.createToField);
@@ -47,6 +53,7 @@ public class CreateFragment extends DatetimeFragment implements View.OnClickList
         createDateField.setOnTouchListener(this);
 
         datePickerFragment = new DatePickerFragment(CreateFragment.this);
+        locationFragment = new LocationFragment(CreateFragment.this);
 
         return fragmentView;
     }
@@ -90,14 +97,46 @@ public class CreateFragment extends DatetimeFragment implements View.OnClickList
                         .setTextColor(getActivity().getColor(R.color.white))
                         .show();
         }
+        else if (view.getId() == R.id.createFromButton){
+            if (ConnectionChecker.checkConnection(getContext())){
+                locationFragment.setUserData(createFromField.getText().toString());
+                locationFragment.show(getParentFragmentManager(), "locationFrom");
+            }
+            else
+                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
+        }
+        else if (view.getId() == R.id.createToButton){
+            if (ConnectionChecker.checkConnection(getContext())){
+                locationFragment.setUserData(createToField.getText().toString());
+                locationFragment.show(getParentFragmentManager(), "locationTo");
+            }
+            else
+                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
+        }
     }
 
     @Override
-    public void onDateChanged(String newData, String dialogFragmentTag) {
-        if (dialogFragmentTag.equals(FragmentTags.DATE_PICKER_TAG))
-            createDateField.setText(newData);
-        else if (dialogFragmentTag.equals(FragmentTags.TIME_PICKER_TAG))
-            createDateField.setText(String.format("%s %s", createDateField.getText().toString(), newData));
+    public void onDataChanged(String newData, String dialogFragmentTag) {
+        switch (dialogFragmentTag) {
+            case FragmentTags.DATE_PICKER_TAG:
+                createDateField.setText(newData);
+                break;
+            case FragmentTags.TIME_PICKER_TAG:
+                createDateField.setText(String.format("%s %s", createDateField.getText().toString(), newData));
+                break;
+            case FragmentTags.LOCATION_FROM_TAG:
+                createFromField.setText(newData);
+                break;
+            case FragmentTags.LOCATION_TO_TAG:
+                createToField.setText(newData);
+                break;
+        }
     }
 
     @Override

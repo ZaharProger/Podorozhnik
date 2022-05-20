@@ -15,9 +15,9 @@ import com.podorozhnik.final_values.FragmentTags;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     private TimePickerFragment timePickerFragment;
-    private DatetimeFragment fragmentReference;
+    private DataSendFragment fragmentReference;
 
-    public DatePickerFragment(DatetimeFragment fragmentReference){
+    public DatePickerFragment(DataSendFragment fragmentReference){
         timePickerFragment = new TimePickerFragment(fragmentReference);
         this.fragmentReference = fragmentReference;
     }
@@ -41,7 +41,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         preparedMonth += month;
 
         timePickerFragment.show(getParentFragmentManager(), FragmentTags.TIME_PICKER_TAG);
-        fragmentReference.onDateChanged(String.format("%d.%s.%d", dayOfMonth, preparedMonth, year), getTag());
+        fragmentReference.onDataChanged(String.format("%d.%s.%d", dayOfMonth, preparedMonth, year), getTag());
         dismiss();
     }
 }
