@@ -1,6 +1,7 @@
 package com.podorozhnik.managers;
 
-import android.util.Log;
+import android.content.Context;
+import android.location.LocationManager;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -26,6 +27,12 @@ public class Geocoder2GIS {
     public Geocoder2GIS(LocationFragment fragmentReference){
         this.fragmentReference = fragmentReference;
         receivedData = new ArrayList<>();
+    }
+    public static boolean checkGPSConnection(Context context){
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) &&
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
     public void setSearchParams(String searchParams) {
