@@ -7,6 +7,8 @@ public class Request {
     private String date;
     private String time;
     private boolean isDriver;
+    public Request()
+    {}
 
     public Request(String userLogin, String departurePoint, String destinationPoint,
                    String date, String time, boolean isDriver){
@@ -15,7 +17,7 @@ public class Request {
         this.destinationPoint = destinationPoint;
         this.date = date;
         this.time = time;
-        this.isDriver = isDriver;
+       this.isDriver = isDriver;
     }
 
     public void setUserLogin(String userLogin) {
