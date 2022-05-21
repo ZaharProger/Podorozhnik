@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +28,6 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
     private EditText createToField;
     private EditText createDateField;
     private Button createConfirmButton;
-    private ImageButton createFromButton;
-    private ImageButton createToButton;
     private DatePickerFragment datePickerFragment;
     private LocationFragment locationFragment;
 
@@ -41,16 +38,14 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
 
         createConfirmButton = fragmentView.findViewById(R.id.createConfirmButton);
         createConfirmButton.setOnClickListener(this);
-        createFromButton = fragmentView.findViewById(R.id.createFromButton);
-        createFromButton.setOnClickListener(this);
-        createToButton = fragmentView.findViewById(R.id.createToButton);
-        createToButton.setOnClickListener(this);
 
         createFromField = fragmentView.findViewById(R.id.createFromField);
         createToField = fragmentView.findViewById(R.id.createToField);
         createDateField = fragmentView.findViewById(R.id.createDateField);
 
         createDateField.setOnTouchListener(this);
+        createFromField.setOnTouchListener(this);
+        createToField.setOnTouchListener(this);
 
         datePickerFragment = new DatePickerFragment(CreateFragment.this);
         locationFragment = new LocationFragment(CreateFragment.this);
@@ -97,28 +92,6 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
                         .setTextColor(getActivity().getColor(R.color.white))
                         .show();
         }
-        else if (view.getId() == R.id.createFromButton){
-            if (ConnectionChecker.checkConnection(getContext())){
-                locationFragment.setUserData(createFromField.getText().toString());
-                locationFragment.show(getParentFragmentManager(), "locationFrom");
-            }
-            else
-                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
-                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
-                        .setTextColor(getActivity().getColor(R.color.white))
-                        .show();
-        }
-        else if (view.getId() == R.id.createToButton){
-            if (ConnectionChecker.checkConnection(getContext())){
-                locationFragment.setUserData(createToField.getText().toString());
-                locationFragment.show(getParentFragmentManager(), "locationTo");
-            }
-            else
-                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
-                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
-                        .setTextColor(getActivity().getColor(R.color.white))
-                        .show();
-        }
     }
 
     @Override
@@ -141,11 +114,33 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
 
     @Override
     public boolean onTouch(View view, MotionEvent event) {
-        boolean isTouched;
+        boolean isTouched = true;
+
         if (view.getId() == R.id.createDateField){
             if (getParentFragmentManager().findFragmentByTag(FragmentTags.DATE_PICKER_TAG) == null)
                 datePickerFragment.show(getParentFragmentManager(), FragmentTags.DATE_PICKER_TAG);
-            isTouched = true;
+        }
+        else if (view.getId() == R.id.createFromField){
+            if (ConnectionChecker.checkConnection(getContext())){
+                if (getParentFragmentManager().findFragmentByTag(FragmentTags.LOCATION_FROM_TAG) == null)
+                    locationFragment.show(getParentFragmentManager(), FragmentTags.LOCATION_FROM_TAG);
+            }
+            else
+                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
+        }
+        else if (view.getId() == R.id.createToField){
+            if (ConnectionChecker.checkConnection(getContext())){
+                if (getParentFragmentManager().findFragmentByTag(FragmentTags.LOCATION_TO_TAG) == null)
+                    locationFragment.show(getParentFragmentManager(), FragmentTags.LOCATION_TO_TAG);
+            }
+            else
+                Snackbar.make(getView(), R.string.lost_connection_text, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getActivity().getColor(R.color.pure_green))
+                        .setTextColor(getActivity().getColor(R.color.white))
+                        .show();
         }
         else
             isTouched = false;
