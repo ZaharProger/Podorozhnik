@@ -1,5 +1,6 @@
 package com.podorozhnik;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -22,6 +23,7 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity_layout);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         findFragment = new FindFragment();
         createFragment = new CreateFragment();

@@ -42,19 +42,17 @@
             android:id="@+id/findFromField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
-            android:drawableStart="@drawable/ic_gps_from"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
             android:textAlignment="textStart"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/findFromButton"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
@@ -75,19 +73,17 @@
             android:id="@+id/findToField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="#ffb2bcaf"
-            android:drawableStart="@drawable/ic_gps_to"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
             android:textAlignment="textStart"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/findToButton"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
@@ -114,6 +110,7 @@
             android:backgroundTint="#ffb2bcaf"
             android:drawablePadding="8dp"
             android:fontFamily="@font/calibri"
+            android:hint="@string/date_field_hint"
             android:inputType="date|time"
             android:textAlignment="center"
             android:textColor="@color/grey"
@@ -144,6 +141,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/findDateField" />
+
+        <ImageButton
+            android:id="@+id/findFromButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/from_button_animation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <ImageButton
+            android:id="@+id/findToButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/to_button_animation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -14,9 +14,9 @@ import androidx.fragment.app.DialogFragment;
 import com.podorozhnik.R;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-    private CreateFragment fragmentReference;
+    private DataSendFragment fragmentReference;
 
-    public TimePickerFragment(CreateFragment fragmentReference){
+    public TimePickerFragment(DataSendFragment fragmentReference){
         this.fragmentReference = fragmentReference;
     }
 
@@ -40,7 +40,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         preparedHours += hourOfDay;
         preparedMinutes += minute;
 
-        fragmentReference.onDateChanged(String.format("%s:%s", preparedHours, preparedMinutes), getTag());
+        fragmentReference.onDataChanged(String.format("%s:%s", preparedHours, preparedMinutes), getTag());
         dismiss();
     }
 }

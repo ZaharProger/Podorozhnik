@@ -30,4 +30,5 @@
     <string name="create_confirm_text">Поехали!</string>
     <string name="create_text">Создать поездку</string>
     <string name="date_field_hint">дд.мм.гггг чч.мм</string>
+    <string name="not_found_text">Ничего не найдено</string>
 </resources>
