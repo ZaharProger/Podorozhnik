@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Geocoder2GIS {
     private static final String TARGET_URL = "https://catalog.api.2gis.com/3.0/items/geocode?" +
@@ -27,12 +28,6 @@ public class Geocoder2GIS {
     public Geocoder2GIS(LocationFragment fragmentReference){
         this.fragmentReference = fragmentReference;
         receivedData = new ArrayList<>();
-    }
-    public static boolean checkGPSConnection(Context context){
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) &&
-                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
     public void setSearchParams(String searchParams) {
@@ -55,7 +50,12 @@ public class Geocoder2GIS {
                     location.setLat(extractedPoint.getDouble(APIValues.LOCATION_LAT));
                     location.setLon(extractedPoint.getDouble(APIValues.LOCATION_LON));
 
-                    receivedData.add(location);
+                    if (receivedData.stream()
+                            .filter(existingLocation -> location.getName().equals(existingLocation.getName()))
+                            .collect(Collectors.toList()).isEmpty()){
+
+                        receivedData.add(location);
+                    }
                 }
 
                 fragmentReference.updateCollection(receivedData);

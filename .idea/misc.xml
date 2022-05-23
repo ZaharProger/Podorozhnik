@@ -22,7 +22,10 @@
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/ic_gps_to_blue.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/ic_gps_to_white.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/ic_search.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/ic_search_small.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/item_border.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/location_list_item_style.xml" value="0.13425925925925927" />
+        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/search_field_style.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/search_icon.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/tab_menu_animation.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/drawable/to_button_animation.xml" value="0.13425925925925927" />
@@ -34,7 +37,8 @@
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/custom_spinner_layout.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/find_fragment_layout.xml" value="0.264" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/find_layout.xml" value="0.264" />
-        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/location_fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/location_fragment_layout.xml" value="0.176" />
+        <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/location_list_item.xml" value="0.4" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/login_fragment_layout.xml" value="0.3463541666666667" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/menu_activity_layout.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/ZaharDomolego/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/menu_start_layout.xml" value="0.176" />
