@@ -7,14 +7,12 @@
         android:id="@+id/txt_userLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
         android:textSize="20sp"
         android:textStyle="italic" />
     <TextView
         android:id="@+id/departurePoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User"
         android:textSize="20sp"
         android:textStyle="italic" />
 
@@ -22,7 +20,6 @@
         android:id="@+id/destinationPoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
         android:textSize="20sp"
         android:textStyle="italic" />
 
@@ -30,14 +27,12 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
         android:textSize="20sp"
         android:textStyle="italic" />
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
         android:textSize="20sp"
         android:textStyle="italic" />
 
