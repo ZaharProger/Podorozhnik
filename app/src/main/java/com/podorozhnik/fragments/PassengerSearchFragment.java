@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.R;
 import com.podorozhnik.adapters.PassengerSearchAdapter;
 import com.podorozhnik.entities.Request;
-import com.podorozhnik.managers.RequestsManager;
+import com.podorozhnik.managers.PodorozhnikMessagingService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,7 @@ public class PassengerSearchFragment extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private final List<Request> list_requests = new ArrayList<>();
+    private PodorozhnikMessagingService messagingService;
 
     @Nullable
     @Override
@@ -41,11 +42,19 @@ public class PassengerSearchFragment extends Fragment {
 
         circular_progress = fragmentView.findViewById(R.id.circular_progress);
         list_data = fragmentView.findViewById(R.id.list_data);
+        list_data.setOnItemClickListener((parent, view, position, id) -> {
+            PassengerSearchAdapter adapter = (PassengerSearchAdapter) list_data.getAdapter();
+            Request selectedRequest = (Request) adapter.getItem(position);
+            String messageToSend = String.format("Вас готов подвезти %s", selectedRequest.getUserLogin());
+
+            messagingService.sendNotification(getContext(), messageToSend);
+        });
+
+        messagingService = new PodorozhnikMessagingService();
 
         initFirebase();
         addEventFirebaseListener();
         return fragmentView;
-
     }
 
     private void addEventFirebaseListener() {

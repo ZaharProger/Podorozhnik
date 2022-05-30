@@ -47,11 +47,11 @@ public class AllSearchAdapter extends BaseAdapter {
 
         View itemView = inflater.inflate(R.layout.listview_item, null);
         itemView.setSaveEnabled(false);
-        TextView txt_userLogin = (TextView) itemView.findViewById(R.id.txt_userLogin);
-        TextView departurePoint = (TextView) itemView.findViewById(R.id.departurePoint);
-        TextView destinationPoint = (TextView) itemView.findViewById(R.id.destinationPoint);
-        TextView date = (TextView) itemView.findViewById(R.id.date);
-        TextView time = (TextView) itemView.findViewById(R.id.time);
+        TextView txt_userLogin = itemView.findViewById(R.id.txt_userLogin);
+        TextView departurePoint = itemView.findViewById(R.id.departurePoint);
+        TextView destinationPoint = itemView.findViewById(R.id.destinationPoint);
+        TextView date = itemView.findViewById(R.id.date);
+        TextView time = itemView.findViewById(R.id.time);
 
             txt_userLogin.setText(listRequest.get(i).getUserLogin());
             departurePoint.setText(listRequest.get(i).getDeparturePoint());

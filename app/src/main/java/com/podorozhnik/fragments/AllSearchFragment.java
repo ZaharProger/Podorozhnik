@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.R;
 import com.podorozhnik.adapters.AllSearchAdapter;
 import com.podorozhnik.entities.Request;
+import com.podorozhnik.managers.PodorozhnikMessagingService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,9 @@ public class AllSearchFragment extends Fragment {
     private ProgressBar circular_progress;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private PodorozhnikMessagingService messagingService;
     private final List<Request> list_requests = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,12 +41,24 @@ public class AllSearchFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
+        messagingService = new PodorozhnikMessagingService();
+
         circular_progress = fragmentView.findViewById(R.id.circular_progress);
         list_data = fragmentView.findViewById(R.id.list_data);
+        list_data.setOnItemClickListener((parent, view, position, id) -> {
+            AllSearchAdapter adapter = (AllSearchAdapter) list_data.getAdapter();
+            Request selectedRequest = (Request) adapter.getItem(position);
+            String messageToSend;
+            if (selectedRequest.isDriver())
+                messageToSend = String.format("С вами хочет поехать %s", selectedRequest.getUserLogin());
+            else
+                messageToSend = String.format("Вас готов подвезти %s", selectedRequest.getUserLogin());
+
+            messagingService.sendNotification(getContext(), messageToSend);
+        });
         initFirebase();
         addEventFirebaseListener();
         return fragmentView;
-
     }
 
     private void addEventFirebaseListener() {
