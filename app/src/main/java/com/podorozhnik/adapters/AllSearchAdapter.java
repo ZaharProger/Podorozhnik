@@ -53,11 +53,12 @@ public class AllSearchAdapter extends BaseAdapter {
         TextView date = itemView.findViewById(R.id.date);
         TextView time = itemView.findViewById(R.id.time);
 
-            txt_userLogin.setText(listRequest.get(i).getUserLogin());
-            departurePoint.setText(listRequest.get(i).getDeparturePoint());
-            destinationPoint.setText(listRequest.get(i).getDestinationPoint());
-            date.setText(listRequest.get(i).getDate());
-            time.setText(listRequest.get(i).getTime());
+        txt_userLogin.setText(listRequest.get(i).getUserLogin());
+        departurePoint.setText(listRequest.get(i).getDeparturePoint());
+        destinationPoint.setText(listRequest.get(i).getDestinationPoint());
+        date.setText(listRequest.get(i).getDate());
+        time.setText(listRequest.get(i).getTime());
 
         return  itemView;
-    }}
+    }
+}

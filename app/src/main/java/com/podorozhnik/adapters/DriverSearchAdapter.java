@@ -61,12 +61,15 @@ public class DriverSearchAdapter extends BaseAdapter {
             time.setText(listRequest.get(i).getTime());
 
             return  itemView;
-        }else {        inflater = (LayoutInflater) activity3
+        }
+        else {
+            inflater = (LayoutInflater) activity3
                 .getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View itemView = inflater.inflate(R.layout.nothing, null);
 
 
-            return itemView;}
-
-    }}
+            return itemView;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 package com.podorozhnik.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,7 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.R;
 import com.podorozhnik.adapters.AllSearchAdapter;
 import com.podorozhnik.entities.Request;
-import com.podorozhnik.managers.PodorozhnikMessagingService;
+import com.podorozhnik.final_values.PrefsValues;
+import com.podorozhnik.managers.PodorozhnikMessagingReceiver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class AllSearchFragment extends Fragment {
     private ProgressBar circular_progress;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private PodorozhnikMessagingService messagingService;
+    private PodorozhnikMessagingReceiver messagingService;
     private final List<Request> list_requests = new ArrayList<>();
 
     @Nullable
@@ -41,20 +44,22 @@ public class AllSearchFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-        messagingService = new PodorozhnikMessagingService();
+        messagingService = new PodorozhnikMessagingReceiver();
 
         circular_progress = fragmentView.findViewById(R.id.circular_progress);
         list_data = fragmentView.findViewById(R.id.list_data);
         list_data.setOnItemClickListener((parent, view, position, id) -> {
+            SharedPreferences prefs = getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
+
             AllSearchAdapter adapter = (AllSearchAdapter) list_data.getAdapter();
             Request selectedRequest = (Request) adapter.getItem(position);
             String messageToSend;
             if (selectedRequest.isDriver())
-                messageToSend = String.format("С вами хочет поехать %s", selectedRequest.getUserLogin());
+                messageToSend = String.format("С вами хочет поехать %s", prefs.getString(PrefsValues.USER_LOGIN, ""));
             else
-                messageToSend = String.format("Вас готов подвезти %s", selectedRequest.getUserLogin());
+                messageToSend = String.format("Вас готов подвезти %s", prefs.getString(PrefsValues.USER_LOGIN, ""));
 
-            messagingService.sendNotification(getContext(), messageToSend);
+            messagingService.sendMessage(getContext(), messageToSend, selectedRequest.getUserDeviceToken());
         });
         initFirebase();
         addEventFirebaseListener();

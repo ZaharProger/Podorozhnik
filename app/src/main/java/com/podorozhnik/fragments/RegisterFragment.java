@@ -47,7 +47,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         String enteredPassword = passwordField.getText().toString().trim();
 
         if (!(enteredLogin.isEmpty() || enteredPassword.isEmpty()) && ConnectionChecker.checkConnection(getContext())){
-            User userData = new User(enteredLogin, enteredPassword);
+            User userData = new User(enteredLogin, enteredPassword, null);
 
             AccountCreator accountCreator = new AccountCreator(userData, RegisterFragment.this);
             accountCreator.createAccount();

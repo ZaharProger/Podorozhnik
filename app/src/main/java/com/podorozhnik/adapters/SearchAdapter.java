@@ -12,8 +12,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class SearchAdapter extends FragmentStateAdapter {
 
-
-
     public SearchAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }

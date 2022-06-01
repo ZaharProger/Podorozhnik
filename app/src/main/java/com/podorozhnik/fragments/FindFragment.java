@@ -62,13 +62,11 @@ public class FindFragment extends DataSendFragment implements View.OnClickListen
 
             if (!(fromFieldData.equals("") || toFieldData.equals("") || dateFieldData.length != 2)){
                 if (ConnectionChecker.checkConnection(getContext())){
-                    String userLogin = "";
                     SharedPreferences prefs = getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
-                    if (prefs.contains(PrefsValues.USER_LOGIN))
-                        userLogin = prefs.getString(PrefsValues.USER_LOGIN, "");
 
-                    Request driverRequest = new Request(userLogin, fromFieldData, toFieldData, dateFieldData[0],
-                            dateFieldData[1], false);
+                    Request driverRequest = new Request(prefs.getString(PrefsValues.USER_LOGIN, ""), fromFieldData,
+                            toFieldData, dateFieldData[0], dateFieldData[1], false,
+                            prefs.getString(PrefsValues.DEVICE_TOKEN, ""));
 
                     RequestsManager requestsManager = new RequestsManager(driverRequest, FindFragment.this);
                     requestsManager.publishRequest();

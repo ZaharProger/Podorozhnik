@@ -7,17 +7,20 @@ public class Request {
     private String date;
     private String time;
     private boolean isDriver;
+    private String userDeviceToken;
+
     public Request()
     {}
 
     public Request(String userLogin, String departurePoint, String destinationPoint,
-                   String date, String time, boolean isDriver){
+                   String date, String time, boolean isDriver, String userDeviceToken){
         this.userLogin = userLogin;
         this.departurePoint = departurePoint;
         this.destinationPoint = destinationPoint;
         this.date = date;
         this.time = time;
-       this.isDriver = isDriver;
+        this.isDriver = isDriver;
+        this.userDeviceToken = userDeviceToken;
     }
 
     public void setUserLogin(String userLogin) {
@@ -66,5 +69,13 @@ public class Request {
 
     public String getTime() {
         return time;
+    }
+
+    public void setUserDeviceToken(String userDeviceToken) {
+        this.userDeviceToken = userDeviceToken;
+    }
+
+    public String getUserDeviceToken() {
+        return userDeviceToken;
     }
 }

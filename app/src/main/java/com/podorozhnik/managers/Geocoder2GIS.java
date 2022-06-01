@@ -1,8 +1,5 @@
 package com.podorozhnik.managers;
 
-import android.content.Context;
-import android.location.LocationManager;
-
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.podorozhnik.entities.Location;
@@ -17,10 +14,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Geocoder2GIS {
-    private static final String TARGET_URL = "https://catalog.api.2gis.com/3.0/items/geocode?" +
-            "type=adm_div.city,adm_div.district,adm_div.division,adm_div.living_area,adm_div.place," +
-            "adm_div.settlement,building,street&fields=items.full_adress_name,items.point&" +
-            "sort=distance&key=ruxckr9415&q=";
     private LocationFragment fragmentReference;
     private String searchParams;
     private ArrayList<Location> receivedData;
@@ -35,7 +28,7 @@ public class Geocoder2GIS {
     }
 
     public void getLocation(){
-        JsonObjectRequest request= new JsonObjectRequest(TARGET_URL + searchParams, response -> {
+        JsonObjectRequest request= new JsonObjectRequest(APIValues.LOCATION_URL + searchParams, response -> {
             try {
                 receivedData.clear();
 

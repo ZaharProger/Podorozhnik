@@ -1,5 +1,6 @@
 package com.podorozhnik;
 
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
@@ -9,7 +10,11 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.final_values.FragmentTags;
+import com.podorozhnik.final_values.PrefsValues;
 import com.podorozhnik.fragments.LoginFragment;
+
+import me.pushy.sdk.Pushy;
+import me.pushy.sdk.util.exceptions.PushyException;
 
 public class StartActivity extends AppCompatActivity {
     /*
@@ -22,6 +27,23 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        new Thread(() -> {
+            try {
+                SharedPreferences prefs = getSharedPreferences(PrefsValues.PREFS_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+
+                if (!Pushy.isRegistered(getApplicationContext()))
+                    prefsEditor.putString(PrefsValues.DEVICE_TOKEN, Pushy.register(getApplicationContext()));
+
+                prefsEditor.apply();
+
+                Pushy.subscribe(getString(R.string.notification_topic), getApplicationContext());
+            }
+            catch (PushyException exception) {
+                exception.printStackTrace();
+            }
+        }).start();
 
         getSupportFragmentManager().beginTransaction()
                                     .add(R.id.authContainer, new LoginFragment(), FragmentTags.LOGIN_TAG)

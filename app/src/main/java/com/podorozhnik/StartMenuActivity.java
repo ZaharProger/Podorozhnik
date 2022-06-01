@@ -10,10 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.podorozhnik.fragments.CreateFragment;
 import com.podorozhnik.fragments.FindFragment;
 import com.podorozhnik.fragments.SearchFragment;
+
+import me.pushy.sdk.Pushy;
 
 public class StartMenuActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     private FindFragment findFragment;
@@ -23,10 +24,9 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Pushy.listen(getApplicationContext());
         setContentView(R.layout.menu_activity_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.notification_topic));
 
         findFragment = new FindFragment();
         createFragment = new CreateFragment();

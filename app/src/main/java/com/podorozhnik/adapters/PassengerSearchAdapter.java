@@ -60,13 +60,16 @@ public class PassengerSearchAdapter extends BaseAdapter {
         destinationPoint.setText(listRequest.get(i).getDestinationPoint());
         date.setText(listRequest.get(i).getDate());
         time.setText(listRequest.get(i).getTime());
+
             return  itemView;
-}else {        inflater = (LayoutInflater) activity
+        }
+        else {
+            inflater = (LayoutInflater) activity
                 .getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View itemView = inflater.inflate(R.layout.nothing, null);
 
-
-            return itemView;}
-
-    }}
+            return itemView;
+        }
+    }
+}

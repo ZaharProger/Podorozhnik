@@ -1,5 +1,8 @@
 package com.podorozhnik.managers;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -10,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.DatabaseValues;
+import com.podorozhnik.final_values.PrefsValues;
 import com.podorozhnik.fragments.RegisterFragment;
 
 import java.util.ArrayList;
@@ -49,6 +53,9 @@ public class AccountCreator implements ValueEventListener {
         }
 
         if (!isFound){
+            SharedPreferences prefs = fragmentReference.getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
+            userData.setDeviceToken(prefs.getString(PrefsValues.DEVICE_TOKEN, ""));
+
             FirebaseDatabase.getInstance()
                             .getReference()
                             .child(DatabaseValues.USERS_TABLE)
