@@ -74,7 +74,8 @@ public class DriverSearchFragment extends Fragment {
                 }
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Request request = postSnapshot.getValue(Request.class);
-                    list_requests.add(request);
+                    if (request.isDriver())
+                        list_requests.add(request);
                 }
                 DriverSearchAdapter adapter = new DriverSearchAdapter(DriverSearchFragment.this, list_requests);
                 list_data.setAdapter(adapter);

@@ -25,10 +25,10 @@ public class SearchAdapter extends FragmentStateAdapter {
                 fragment = new AllSearchFragment();
                 break;
             case 1:
-                fragment = new DriverSearchFragment();
+                fragment = new PassengerSearchFragment();
                 break;
             case 2:
-                fragment = new PassengerSearchFragment();
+                fragment = new DriverSearchFragment();
                 break;
         }
         return fragment;}
