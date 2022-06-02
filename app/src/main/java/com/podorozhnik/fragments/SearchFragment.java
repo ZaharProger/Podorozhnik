@@ -13,12 +13,15 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.podorozhnik.R;
 import com.podorozhnik.StartActivity;
 import com.podorozhnik.adapters.SearchAdapter;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
 import com.podorozhnik.interfaces.DatabaseEventListener;
+
+import java.util.ArrayList;
 
 public class SearchFragment extends Fragment implements  DatabaseEventListener {
 
@@ -38,8 +41,13 @@ public class SearchFragment extends Fragment implements  DatabaseEventListener {
 
 
         tabLayout.addTab(tabLayout.newTab().setText("Всё"));
-        tabLayout.addTab(tabLayout.newTab().setText("Водитель"));
-        tabLayout.addTab(tabLayout.newTab().setText("Пассажир"));
+       // tabLayout.addTab(tabLayout.newTab().setText("Водитель"));
+      //  tabLayout.addTab(tabLayout.newTab().setText("Пассажир"));
+        ArrayList<Integer> icons = new ArrayList<>();
+        icons.add(R.drawable.ic_find);
+        icons.add(R.drawable.ic_create);
+
+
 
         FragmentManager fragmentManager = getChildFragmentManager();
         adapter = new SearchAdapter(fragmentManager , getLifecycle());
@@ -69,7 +77,12 @@ public class SearchFragment extends Fragment implements  DatabaseEventListener {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });viewPager2.setSaveEnabled(false);
-
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            if (position != 0)
+                tab.setIcon(icons.get(position - 1));
+            else
+                tab.setText(R.string.all_item_title);
+        }).attach();
         return fragmentView;
 
     }

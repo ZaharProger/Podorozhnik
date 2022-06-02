@@ -57,6 +57,41 @@
         <entry key="..\:/Users/advok_000/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/login_fragment_layout.xml" value="0.35885416666666664" />
         <entry key="..\:/Users/advok_000/AndroidStudioProjects/Podorozhnik/app/src/main/res/layout/login_layout.xml" value="0.33" />
         <entry key="..\:/Users/advok_000/AppData/Local/Android/Sdk/platforms/android-31/data/res/drawable/edit_text_material.xml" value="0.375" />
+        <entry key="app/src/main/res/drawable/ic_0.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_1.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_9.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic__2.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic__6710038762026b9.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic__city.xml" value="0.216" />
+        <entry key="app/src/main/res/drawable/ic_c.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_city.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_create.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ic_find.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/item_border.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/tab_menu_animation.xml" value="0.147" />
+        <entry key="app/src/main/res/layout/all_search_fragment.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/all_search_fragment_layout.xml" value="0.25815217391304346" />
+        <entry key="app/src/main/res/layout/create_fragment_layout.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/custom_spinner_dropdown.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/custom_spinner_layout.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/find_fragment_layout.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/fragment_blank1.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/fragment_blank2.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/fragment_blank3.xml" value="0.1621376811594203" />
+        <entry key="app/src/main/res/layout/fragment_page.xml" value="0.24728260869565216" />
+        <entry key="app/src/main/res/layout/listview_item.xml" value="0.22086639404296862" />
+        <entry key="app/src/main/res/layout/location_fragment_layout.xml" value="0.22644927536231885" />
+        <entry key="app/src/main/res/layout/login_fragment_layout.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/layout/menu_activity_layout.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/nothing.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/out_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/qw.xml" value="0.26222826086956524" />
+        <entry key="app/src/main/res/layout/registration_fragment_layout.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/requests_fragment_layout.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/search_fragment_layout.xml" value="0.13286437988281252" />
+        <entry key="app/src/main/res/layout/start_activity_layout.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/menu/menu_layout.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
