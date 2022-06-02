@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.podorozhnik.R;
 import com.podorozhnik.entities.Request;
 import com.podorozhnik.fragments.AllSearchFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllSearchAdapter extends BaseAdapter {
@@ -40,6 +42,9 @@ public class AllSearchAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        ArrayList<Integer> icons = new ArrayList<>();
+        icons.add(R.drawable.ic_find);
+        icons.add(R.drawable.ic_create);
 
         inflater = (LayoutInflater) activity2
                 .getContext()
@@ -47,13 +52,20 @@ public class AllSearchAdapter extends BaseAdapter {
 
         View itemView = inflater.inflate(R.layout.listview_item, null);
         itemView.setSaveEnabled(false);
-        TextView txt_userLogin = (TextView) itemView.findViewById(R.id.txt_userLogin);
+
         TextView departurePoint = (TextView) itemView.findViewById(R.id.departurePoint);
         TextView destinationPoint = (TextView) itemView.findViewById(R.id.destinationPoint);
         TextView date = (TextView) itemView.findViewById(R.id.date);
         TextView time = (TextView) itemView.findViewById(R.id.time);
+        ImageView ic=(ImageView) itemView.findViewById(R.id.ic) ;
+        ImageView city=(ImageView) itemView.findViewById(R.id.city) ;
 
-            txt_userLogin.setText(listRequest.get(i).getUserLogin());
+        if (!listRequest.get(i).isDriver()){
+
+            ic.setImageResource(R.drawable.ic_find);
+        } else {
+            ic.setImageResource(R.drawable.ic_create);
+        }  city.setImageResource(R.drawable.ic_city);
             departurePoint.setText(listRequest.get(i).getDeparturePoint());
             destinationPoint.setText(listRequest.get(i).getDestinationPoint());
             date.setText(listRequest.get(i).getDate());

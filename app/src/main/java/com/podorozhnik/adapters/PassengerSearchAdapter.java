@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.podorozhnik.R;
@@ -49,13 +50,13 @@ public class PassengerSearchAdapter extends BaseAdapter {
         View itemView = inflater.inflate(R.layout.listview_item, null);
             itemView.setSaveEnabled(false);
 
-            TextView txt_userLogin = (TextView) itemView.findViewById(R.id.txt_userLogin);
         TextView departurePoint = (TextView) itemView.findViewById(R.id.departurePoint);
         TextView destinationPoint = (TextView) itemView.findViewById(R.id.destinationPoint);
         TextView date = (TextView) itemView.findViewById(R.id.date);
         TextView time = (TextView) itemView.findViewById(R.id.time);
+        ImageView city=(ImageView) itemView.findViewById(R.id.city) ;
 
-        txt_userLogin.setText(listRequest.get(i).getUserLogin());
+            city.setImageResource(R.drawable.ic_city);
         departurePoint.setText(listRequest.get(i).getDeparturePoint());
         destinationPoint.setText(listRequest.get(i).getDestinationPoint());
         date.setText(listRequest.get(i).getDate());
