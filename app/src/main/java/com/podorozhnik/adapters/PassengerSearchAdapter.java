@@ -56,7 +56,7 @@ public class PassengerSearchAdapter extends BaseAdapter {
         TextView date = itemView.findViewById(R.id.date);
         TextView time = itemView.findViewById(R.id.time);
 
-            city.setImageResource(R.drawable.ic_city);
+        city.setImageResource(R.drawable.ic_city);
         departurePoint.setText(listRequest.get(i).getDeparturePoint());
         destinationPoint.setText(listRequest.get(i).getDestinationPoint());
         date.setText(listRequest.get(i).getDate());

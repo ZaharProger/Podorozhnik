@@ -53,25 +53,20 @@ public class AllSearchAdapter extends BaseAdapter {
         View itemView = inflater.inflate(R.layout.listview_item, null);
         itemView.setSaveEnabled(false);
 
-        ImageView ic=(ImageView) itemView.findViewById(R.id.ic) ;
-        ImageView city=(ImageView) itemView.findViewById(R.id.city) ;
-        TextView txt_userLogin = itemView.findViewById(R.id.txt_userLogin);
+        ImageView ic= itemView.findViewById(R.id.ic) ;
+        ImageView city= itemView.findViewById(R.id.city) ;
         TextView departurePoint = itemView.findViewById(R.id.departurePoint);
         TextView destinationPoint = itemView.findViewById(R.id.destinationPoint);
         TextView date = itemView.findViewById(R.id.date);
         TextView time = itemView.findViewById(R.id.time);
 
         if (!listRequest.get(i).isDriver()){
-
             ic.setImageResource(R.drawable.ic_find);
-        } else {
+        }
+        else {
             ic.setImageResource(R.drawable.ic_create);
-        }  city.setImageResource(R.drawable.ic_city);
-            departurePoint.setText(listRequest.get(i).getDeparturePoint());
-            destinationPoint.setText(listRequest.get(i).getDestinationPoint());
-            date.setText(listRequest.get(i).getDate());
-            time.setText(listRequest.get(i).getTime());
-        txt_userLogin.setText(listRequest.get(i).getUserLogin());
+        }
+        city.setImageResource(R.drawable.ic_city);
         departurePoint.setText(listRequest.get(i).getDeparturePoint());
         destinationPoint.setText(listRequest.get(i).getDestinationPoint());
         date.setText(listRequest.get(i).getDate());
