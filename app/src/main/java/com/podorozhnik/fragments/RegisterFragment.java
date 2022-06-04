@@ -18,11 +18,11 @@ import com.podorozhnik.StartActivity;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
-import com.podorozhnik.interfaces.DatabaseEventListener;
+import com.podorozhnik.interfaces.EventListener;
 import com.podorozhnik.managers.AccountCreator;
 import com.podorozhnik.managers.ConnectionChecker;
 
-public class RegisterFragment extends Fragment implements View.OnClickListener, DatabaseEventListener {
+public class RegisterFragment extends Fragment implements View.OnClickListener, EventListener {
     Button createAccountButton;
     EditText loginField;
     EditText passwordField;

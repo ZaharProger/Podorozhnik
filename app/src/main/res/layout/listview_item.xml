@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:id="@+id/linearLayout1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
     android:layout_weight="1"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="4dp">
 
         <TextView
             android:id="@+id/date"
@@ -26,9 +25,9 @@
 
         <TextView
             android:id="@+id/time"
-            android:layout_marginTop="10dp"
             android:layout_width="116dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:textSize="16sp"
             android:textStyle="italic" />
 
@@ -44,17 +43,19 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
 
         <ImageView
             android:id="@+id/city"
             android:layout_width="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="74dp" />
+            android:layout_height="74dp"
+            android:layout_marginTop="10dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
@@ -64,16 +65,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/destinationPoint"
-                android:layout_width="330dp"
+                android:id="@+id/departurePoint"
+                android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:maxLines="10"
                 android:textSize="16sp"
                 android:textStyle="italic" />
 
             <TextView
-                android:id="@+id/departurePoint"
-                android:layout_width="330dp"
+                android:id="@+id/destinationPoint"
+                android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:maxLines="10"
                 android:textSize="16sp"
                 android:textStyle="italic" />
 

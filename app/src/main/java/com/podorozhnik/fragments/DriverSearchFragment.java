@@ -54,7 +54,7 @@ public class DriverSearchFragment extends Fragment {
             Request selectedRequest = (Request) adapter.getItem(position);
             String messageToSend = String.format("С вами хочет поехать %s", prefs.getString(PrefsValues.USER_LOGIN, ""));
 
-            messagingService.sendMessage(getContext(), messageToSend, selectedRequest.getUserDeviceToken());
+            messagingService.sendMessage(getContext(), messageToSend, selectedRequest);
         });
 
         initFirebase();

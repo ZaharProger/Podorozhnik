@@ -5,5 +5,7 @@ public enum OperationResults {
     WRONG_LOGIN,
     WRONG_PASSWORD,
     EXISTING_LOGIN,
-    DATABASE_ERROR
+    DATABASE_ERROR,
+    GPS_ERROR,
+    MAP_ERROR
 }

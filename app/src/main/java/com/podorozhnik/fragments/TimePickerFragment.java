@@ -40,7 +40,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         preparedHours += hourOfDay;
         preparedMinutes += minute;
 
-        fragmentReference.onDataChanged(String.format("%s:%s", preparedHours, preparedMinutes), getTag());
+        fragmentReference.onDataChanged(null, String.format("%s:%s", preparedHours, preparedMinutes), getTag());
         dismiss();
     }
 }

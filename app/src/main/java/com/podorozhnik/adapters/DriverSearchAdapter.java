@@ -56,8 +56,8 @@ public class DriverSearchAdapter extends BaseAdapter {
             TextView time = itemView.findViewById(R.id.time);
 
             city.setImageResource(R.drawable.ic_city);
-            departurePoint.setText(listRequest.get(i).getDeparturePoint());
-            destinationPoint.setText(listRequest.get(i).getDestinationPoint());
+            departurePoint.setText(listRequest.get(i).getDeparturePoint().getName());
+            destinationPoint.setText(listRequest.get(i).getDestinationPoint().getName());
             date.setText(listRequest.get(i).getDate());
             time.setText(listRequest.get(i).getTime());
 

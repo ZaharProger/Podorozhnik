@@ -41,7 +41,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         preparedMonth += month;
 
         timePickerFragment.show(getParentFragmentManager(), FragmentTags.TIME_PICKER_TAG);
-        fragmentReference.onDataChanged(String.format("%d.%s.%d", dayOfMonth, preparedMonth, year), getTag());
+        fragmentReference.onDataChanged(null, String.format("%d.%s.%d", dayOfMonth, preparedMonth, year), getTag());
         dismiss();
     }
 }

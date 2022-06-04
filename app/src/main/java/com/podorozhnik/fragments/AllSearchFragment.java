@@ -59,7 +59,7 @@ public class AllSearchFragment extends Fragment {
             else
                 messageToSend = String.format("Вас готов подвезти %s", prefs.getString(PrefsValues.USER_LOGIN, ""));
 
-            messagingService.sendMessage(getContext(), messageToSend, selectedRequest.getUserDeviceToken());
+            messagingService.sendMessage(getContext(), messageToSend, selectedRequest);
         });
         initFirebase();
         addEventFirebaseListener();

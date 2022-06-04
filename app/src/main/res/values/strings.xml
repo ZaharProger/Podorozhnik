@@ -33,4 +33,7 @@
     <string name="not_found_text">Ничего не найдено</string>
     <string name="cancel_text">Отмена</string>
     <string name="notification_topic">podorozhnik</string>
+    <string name="map_item_title">Карта</string>
+    <string name="map_error">Не удалось загрузить карту с указанным маршрутом!</string>
+    <string name="gps_error">Подключите GPS!</string>
 </resources>

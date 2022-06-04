@@ -2,8 +2,8 @@ package com.podorozhnik.entities;
 
 public class Request {
     private String userLogin;
-    private String departurePoint;
-    private String destinationPoint;
+    private Location departurePoint;
+    private Location destinationPoint;
     private String date;
     private String time;
     private boolean isDriver;
@@ -12,7 +12,7 @@ public class Request {
     public Request()
     {}
 
-    public Request(String userLogin, String departurePoint, String destinationPoint,
+    public Request(String userLogin, Location departurePoint, Location destinationPoint,
                    String date, String time, boolean isDriver, String userDeviceToken){
         this.userLogin = userLogin;
         this.departurePoint = departurePoint;
@@ -47,19 +47,19 @@ public class Request {
         return date;
     }
 
-    public void setDeparturePoint(String departurePoint) {
+    public void setDeparturePoint(Location departurePoint) {
         this.departurePoint = departurePoint;
     }
 
-    public String getDeparturePoint() {
+    public Location getDeparturePoint() {
         return departurePoint;
     }
 
-    public void setDestinationPoint(String destinationPoint) {
+    public void setDestinationPoint(Location destinationPoint) {
         this.destinationPoint = destinationPoint;
     }
 
-    public String getDestinationPoint() {
+    public Location getDestinationPoint() {
         return destinationPoint;
     }
 

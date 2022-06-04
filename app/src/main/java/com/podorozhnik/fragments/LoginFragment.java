@@ -20,11 +20,11 @@ import com.podorozhnik.StartMenuActivity;
 import com.podorozhnik.entities.User;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
-import com.podorozhnik.interfaces.DatabaseEventListener;
+import com.podorozhnik.interfaces.EventListener;
 import com.podorozhnik.managers.Authorizer;
 import com.podorozhnik.managers.ConnectionChecker;
 
-public class LoginFragment extends Fragment implements View.OnClickListener, DatabaseEventListener {
+public class LoginFragment extends Fragment implements View.OnClickListener, EventListener {
     Button loginButton;
     Button registerButton;
     EditText loginField;

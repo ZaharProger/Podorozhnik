@@ -19,11 +19,11 @@ import com.podorozhnik.StartActivity;
 import com.podorozhnik.adapters.SearchAdapter;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
-import com.podorozhnik.interfaces.DatabaseEventListener;
+import com.podorozhnik.interfaces.EventListener;
 
 import java.util.ArrayList;
 
-public class SearchFragment extends Fragment implements  DatabaseEventListener {
+public class SearchFragment extends Fragment implements EventListener {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;

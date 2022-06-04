@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.R;
 import com.podorozhnik.StartMenuActivity;
+import com.podorozhnik.entities.Location;
 import com.podorozhnik.entities.Request;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
@@ -30,11 +31,16 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
     private Button createConfirmButton;
     private DatePickerFragment datePickerFragment;
     private LocationFragment locationFragment;
+    private Location fromLocation;
+    private Location toLocation;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.create_fragment_layout, container, false);
+
+        fromLocation = new Location();
+        toLocation = new Location();
 
         createConfirmButton = fragmentView.findViewById(R.id.createConfirmButton);
         createConfirmButton.setOnClickListener(this);
@@ -56,16 +62,16 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.createConfirmButton){
-            String fromFieldData = createFromField.getText().toString().trim();
-            String toFieldData = createToField.getText().toString().trim();
             String[] dateFieldData = createDateField.getText().toString().split("[\\s]+");
+            String createFromText = createFromField.getText().toString();
+            String createToText = createToField.getText().toString();
 
-            if (!(fromFieldData.equals("") || toFieldData.equals("") || dateFieldData.length != 2)){
+            if (!(createFromText.equals("") || createToText.equals("") || dateFieldData.length != 2)){
                 if (ConnectionChecker.checkConnection(getContext())){
                     SharedPreferences prefs = getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
 
-                    Request driverRequest = new Request(prefs.getString(PrefsValues.USER_LOGIN, ""), fromFieldData,
-                            toFieldData, dateFieldData[0], dateFieldData[1],
+                    Request driverRequest = new Request(prefs.getString(PrefsValues.USER_LOGIN, ""), fromLocation,
+                            toLocation, dateFieldData[0], dateFieldData[1],
                             true, prefs.getString(PrefsValues.DEVICE_TOKEN, ""));
 
                     RequestsManager requestsManager = new RequestsManager(driverRequest, CreateFragment.this);
@@ -93,19 +99,29 @@ public class CreateFragment extends DataSendFragment implements View.OnClickList
     }
 
     @Override
-    public void onDataChanged(String newData, String dialogFragmentTag) {
+    public void onDataChanged(Location newLocationData, String newTimeData, String dialogFragmentTag) {
         switch (dialogFragmentTag) {
             case FragmentTags.DATE_PICKER_TAG:
-                createDateField.setText(newData);
+                createDateField.setText(newTimeData);
                 break;
             case FragmentTags.TIME_PICKER_TAG:
-                createDateField.setText(String.format("%s %s", createDateField.getText().toString(), newData));
+                createDateField.setText(String.format("%s %s", createDateField.getText().toString(), newTimeData));
                 break;
             case FragmentTags.LOCATION_FROM_TAG:
-                createFromField.setText(newData);
+                if (newLocationData != null){
+                    fromLocation = newLocationData;
+                    createFromField.setText(fromLocation.getName());
+                }
+                else
+                    createFromField.setText("");
                 break;
             case FragmentTags.LOCATION_TO_TAG:
-                createToField.setText(newData);
+                if (newLocationData != null){
+                    toLocation = newLocationData;
+                    createToField.setText(toLocation.getName());
+                }
+                else
+                    createToField.setText("");
                 break;
         }
     }

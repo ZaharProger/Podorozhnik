@@ -46,12 +46,12 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
         holder.locationName.setText(item.getName());
         holder.locationName.setOnClickListener(view -> {
             if (view.getId() == R.id.locationName)
-                fragmentReference.onLocationSelected(item.getName());
+                fragmentReference.onLocationSelected(item);
         });
 
         holder.searchImage.setOnClickListener(view -> {
             if (view.getId() == R.id.searchImage)
-                fragmentReference.onLocationSelected(item.getName());
+                fragmentReference.onLocationSelected(item);
         });
     }
 

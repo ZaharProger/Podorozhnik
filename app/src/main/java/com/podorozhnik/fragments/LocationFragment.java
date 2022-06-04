@@ -31,12 +31,11 @@ public class LocationFragment extends DialogFragment implements CollectionReceiv
     private RecyclerView locationList;
     private EditText searchField;
     private ProgressBar locationProgressBar;
-    private String selectedLocation;
+    private Location selectedLocation;
 
     public LocationFragment(DataSendFragment fragmentReference){
         this.fragmentReference = fragmentReference;
         geocoder2GIS = new Geocoder2GIS(LocationFragment.this);
-        selectedLocation = "";
     }
 
     @Nullable
@@ -75,7 +74,7 @@ public class LocationFragment extends DialogFragment implements CollectionReceiv
     public void onDestroy(){
         super.onDestroy();
 
-        fragmentReference.onDataChanged(selectedLocation, getTag());
+        fragmentReference.onDataChanged(selectedLocation, null, getTag());
 
         dismiss();
     }
@@ -83,6 +82,7 @@ public class LocationFragment extends DialogFragment implements CollectionReceiv
     @Override
     public void onClick(View view) {
         searchField.setText("");
+        selectedLocation = null;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class LocationFragment extends DialogFragment implements CollectionReceiv
 
     }
 
-    public void onLocationSelected(String selectedLocation){
+    public void onLocationSelected(Location selectedLocation){
         this.selectedLocation = selectedLocation;
 
         onDestroy();

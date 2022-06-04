@@ -18,4 +18,10 @@ public class APIValues {
     public static final String NOTIFICATION_MESSAGE = "message";
     public static final String NOTIFICATION_TITLE = "title";
     public static final String CONTENT_TYPE = "application/json";
+    public static final String REQUEST_FROM = "departure_point";
+    public static final String REQUEST_TO = "destination_point";
+    public static final String MAP_URL = "https://static.maps.2gis.com/1.0?size=600x600@2x&z=12";
+    public static final String POINTER_PARAM = "&pt=";
+    public static final String[] POINTER_NUMS = new String[]{"~n:1", "~n:2"};
+    public static final String POINTER_COLOR = "~c:gn";
 }

@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import com.podorozhnik.R;
 import com.podorozhnik.StartMenuActivity;
+import com.podorozhnik.entities.Location;
 import com.podorozhnik.entities.Request;
 import com.podorozhnik.enums.OperationResults;
 import com.podorozhnik.final_values.FragmentTags;
@@ -30,11 +31,16 @@ public class FindFragment extends DataSendFragment implements View.OnClickListen
     private Button findConfirmButton;
     private DatePickerFragment datePickerFragment;
     private LocationFragment locationFragment;
+    private Location fromLocation;
+    private Location toLocation;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.find_fragment_layout, container, false);
+
+        fromLocation = new Location();
+        toLocation = new Location();
 
         findConfirmButton = fragmentView.findViewById(R.id.findConfirmButton);
         findConfirmButton. setOnClickListener(this);
@@ -56,16 +62,16 @@ public class FindFragment extends DataSendFragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.findConfirmButton){
-            String fromFieldData = findFromField.getText().toString().trim();
-            String toFieldData = findToField.getText().toString().trim();
             String[] dateFieldData = findDateField.getText().toString().split("[\\s]+");
+            String findFromText = findFromField.getText().toString();
+            String findToText = findToField.getText().toString();
 
-            if (!(fromFieldData.equals("") || toFieldData.equals("") || dateFieldData.length != 2)){
+            if (!(findFromText.equals("") || findToText.equals("") || dateFieldData.length != 2)){
                 if (ConnectionChecker.checkConnection(getContext())){
                     SharedPreferences prefs = getContext().getSharedPreferences(PrefsValues.PREFS_NAME, Context.MODE_PRIVATE);
 
-                    Request driverRequest = new Request(prefs.getString(PrefsValues.USER_LOGIN, ""), fromFieldData,
-                            toFieldData, dateFieldData[0], dateFieldData[1], false,
+                    Request driverRequest = new Request(prefs.getString(PrefsValues.USER_LOGIN, ""), fromLocation,
+                            toLocation, dateFieldData[0], dateFieldData[1], false,
                             prefs.getString(PrefsValues.DEVICE_TOKEN, ""));
 
                     RequestsManager requestsManager = new RequestsManager(driverRequest, FindFragment.this);
@@ -94,19 +100,29 @@ public class FindFragment extends DataSendFragment implements View.OnClickListen
     }
 
     @Override
-    public void onDataChanged(String newData, String dialogFragmentTag) {
+    public void onDataChanged(Location newLocationData, String newTimeData, String dialogFragmentTag) {
         switch (dialogFragmentTag){
             case FragmentTags.DATE_PICKER_TAG:
-                findDateField.setText(newData);
+                findDateField.setText(newTimeData);
                 break;
             case FragmentTags.TIME_PICKER_TAG:
-                findDateField.setText(String.format("%s %s", findDateField.getText().toString(), newData));
+                findDateField.setText(String.format("%s %s", findDateField.getText().toString(), newTimeData));
                 break;
             case FragmentTags.LOCATION_FROM_TAG:
-                findFromField.setText(newData);
+                if (newLocationData != null){
+                    fromLocation = newLocationData;
+                    findFromField.setText(fromLocation.getName());
+                }
+                else
+                    findFromField.setText("");
                 break;
             case FragmentTags.LOCATION_TO_TAG:
-                findToField.setText(newData);
+                if (newLocationData != null){
+                    toLocation = newLocationData;
+                    findToField.setText(toLocation.getName());
+                }
+                else
+                    findToField.setText("");
                 break;
         }
     }
