@@ -36,4 +36,5 @@
     <string name="map_item_title">Карта</string>
     <string name="map_error">Не удалось загрузить карту с указанным маршрутом!</string>
     <string name="gps_error">Подключите GPS!</string>
+    <string name="meme_item_title">Картинки</string>
 </resources>

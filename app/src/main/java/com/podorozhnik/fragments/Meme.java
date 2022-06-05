@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
@@ -23,22 +21,27 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.podorozhnik.R;
+
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.util.Random;
 
 public class Meme extends Fragment implements View.OnClickListener {
-    String memeUrl = null;
     ProgressBar loading;
     ImageView memeImage;
     private Button next;
     private Button sh;
+    private static Random memePositionGenerator = new Random();
+    private String memeUrl;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.activity_meme, container, false);
+
         loading = fragmentView.findViewById(R.id.progress);
-         memeImage = fragmentView.findViewById(R.id.image);
+        memeImage = fragmentView.findViewById(R.id.image);
 
         next = fragmentView.findViewById(R.id.next);
         next. setOnClickListener(this);
@@ -48,48 +51,41 @@ public class Meme extends Fragment implements View.OnClickListener {
 
         super.onCreate(savedInstanceState);
 
-        loadMeme();
+        getMeme();
         return fragmentView;
-
     }
 
-    private void loadMeme(){
+    private void getMeme(){
         loading.setVisibility(View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this.getContext());
-        String url = "https://api.imgflip.com/get_memes";
+        String url = "https://meme-api.herokuapp.com/gimme";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            memeUrl = response.getString("url");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                response -> {
+                    try {
+                        JSONArray memesArray = response.getJSONArray("preview");
+                        memeUrl = memesArray.getString(memePositionGenerator.nextInt(memesArray.length()));
+                    }
+                    catch (JSONException exception) {
+                        memeUrl = "";
+                    }
+
+                    Glide.with(Meme.this).load(memeUrl).listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            loading.setVisibility(View.VISIBLE);
+                            return false;
                         }
 
-                        Glide.with(Meme.this).load(memeUrl).listener(new RequestListener<Drawable>() {
-                            @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                loading.setVisibility(View.VISIBLE);
-                                return false;
-                            }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
+                            loading.setVisibility(View.GONE);
+                            return false;
+                        }
 
-                            @Override
-                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
-                                loading.setVisibility(View.GONE);
-                                return false;
-                            }
-
-                        }).into(memeImage);
-                    }
+                    }).into(memeImage);
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }
+                error -> {}
         );
         queue.add(jsonObjectRequest);
     }
@@ -97,7 +93,7 @@ public class Meme extends Fragment implements View.OnClickListener {
     @Override
     public void onClick (View view) {
         if (view.getId() == R.id.next){
-            loadMeme();
+            getMeme();
         }else if (view.getId() == R.id.share){
             shareMeme(view);
         }
@@ -106,8 +102,8 @@ public class Meme extends Fragment implements View.OnClickListener {
     public void shareMeme(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra("Check meme using",memeUrl);
-        Intent chooser = Intent.createChooser(intent,"Share meme using....");
+        intent.putExtra("Check meme using", memeUrl);
+        Intent chooser = Intent.createChooser(intent,"Поделиться с помощью...");
         startActivity(chooser);
     }
 
