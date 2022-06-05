@@ -16,4 +16,8 @@
         android:id="@+id/mapItem"
         android:title="@string/map_item_title"
         android:icon="@drawable/ic_gps_to"/>
+    <item
+        android:id="@+id/memeItem"
+        android:title="Картинки"
+        android:icon="@drawable/ic_eye"/>
 </menu>

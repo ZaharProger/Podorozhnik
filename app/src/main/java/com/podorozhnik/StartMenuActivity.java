@@ -22,6 +22,7 @@ import com.podorozhnik.final_values.PrefsValues;
 import com.podorozhnik.fragments.CreateFragment;
 import com.podorozhnik.fragments.FindFragment;
 import com.podorozhnik.fragments.MapFragment;
+import com.podorozhnik.fragments.Meme;
 import com.podorozhnik.fragments.SearchFragment;
 
 import me.pushy.sdk.Pushy;
@@ -31,6 +32,7 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
     private CreateFragment createFragment;
     private SearchFragment searchFragment;
     private MapFragment mapFragment;
+    private Meme meme;
     public static boolean hasAsyncTasks = false;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
         createFragment = new CreateFragment();
         searchFragment = new SearchFragment();
         mapFragment = new MapFragment();
+        meme= new Meme();
 
         BottomNavigationView appMenu = findViewById(R.id.appMenu);
         appMenu.setOnItemSelectedListener(this);
@@ -107,6 +110,12 @@ public class StartMenuActivity extends AppCompatActivity implements NavigationBa
 
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.menuItemContainer, mapFragment)
+                        .commit();
+            }else if (item.getItemId() == R.id.memeItem) {
+                isChosen = true;
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.menuItemContainer, meme)
                         .commit();
             }
         } else
